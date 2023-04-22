@@ -7,7 +7,6 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject settings;
-    public GameObject volume;
     public GameObject credits;
     public GameObject exitgame;
     //public GameObject manager;
@@ -20,7 +19,7 @@ public class MainMenu : MonoBehaviour
     public void OnClickPlay()
     {
         //manager.GetComponent<MusicManager>().SoundEffect();
-        SceneManager.LoadScene("PlayOptions");
+        print("Play");
     }
 
     public void OnClickBackSettings()
@@ -51,14 +50,14 @@ public class MainMenu : MonoBehaviour
         //manager.GetComponent<MusicManager>().SoundEffect();
     }
 
-    public void OnClickBackExitGame()
+    public void OnClickNoExitGame()
     {
         mainMenu.SetActive(true);
         exitgame.SetActive(false);
         //manager.GetComponent<MusicManager>().SoundEffect();
     }
 
-    public void OnClickNoExitGame()
+    public void OnClickExitGame()
     {
         mainMenu.SetActive(false);
         exitgame.SetActive(true);
