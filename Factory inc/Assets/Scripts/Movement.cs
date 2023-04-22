@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Movement : NetworkBehaviour
 {
     private Vector3 movement;
     public Rigidbody rb;
@@ -18,12 +19,15 @@ public class Movement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        rb.velocity = movement * moveSpeed;
-
-        if (movement != Vector3.zero)
+        if (isOwned)
         {
-            look = Quaternion.LookRotation(movement, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, look, rotateSpeed);
-        }
+            rb.velocity = movement * moveSpeed;
+
+            if (movement != Vector3.zero)
+            {
+                look = Quaternion.LookRotation(movement, Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, look, rotateSpeed);
+            }
+        }      
     }
 }
