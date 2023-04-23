@@ -5,16 +5,36 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject startScreen;
     public GameObject mainMenu;
     public GameObject settings;
     public GameObject credits;
     public GameObject exitgame;
+    public GameObject playerAmount;
+    public GameObject createLobby;
     public AudioSource soundEffect;
+    private bool check;
+
+    public void Update()
+    {
+        if (check == false)
+        {
+            if (Input.anyKey)
+            {
+                //make loading screen and multiplayer connection
+                check = true;
+                buttonPress();
+                mainMenu.SetActive(true);
+                startScreen.SetActive(false);
+            }
+        }
+    }
 
     public void OnClickPlay()
     {
         buttonPress();
-        print("Play");
+        playerAmount.SetActive(true);
+        mainMenu.SetActive(false);
     }
 
     public void OnClickBackSettings()
@@ -27,8 +47,8 @@ public class MainMenu : MonoBehaviour
     public void OnClickSettings()
     {
         buttonPress();
-        mainMenu.SetActive(false);
         settings.SetActive(true);
+        mainMenu.SetActive(false);
     }
 
     public void OnClickBackCredits()
@@ -41,8 +61,8 @@ public class MainMenu : MonoBehaviour
     public void OnClickCredits()
     {
         buttonPress();
-        mainMenu.SetActive(false);
         credits.SetActive(true);
+        mainMenu.SetActive(false);
     }
 
     public void OnClickNoExitGame()
@@ -55,14 +75,53 @@ public class MainMenu : MonoBehaviour
     public void OnClickExitGame()
     {
         buttonPress();
-        mainMenu.SetActive(false);
         exitgame.SetActive(true);
+        mainMenu.SetActive(false);
     }
 
     public void OnClickYesExitGame()
     {
         buttonPress();
         Application.Quit();
+    }
+
+    public void OnClickBackPlayerAmount()
+    {
+        buttonPress();
+        mainMenu.SetActive(true);
+        playerAmount.SetActive(false);
+    }
+
+    public void OnClickSinglePlayer()
+    {
+        buttonPress();
+        //join Game
+    }
+
+    public void OnClickMultiplayer()
+    {
+        buttonPress();
+        createLobby.SetActive(true);
+        playerAmount.SetActive(false);
+    }
+
+    public void OnClickBackCreateLobby()
+    {
+        buttonPress();
+        playerAmount.SetActive(true);
+        createLobby.SetActive(false);
+    }
+
+    public void OnClickCreate()
+    {
+        buttonPress();
+        //create Game
+    }
+
+    public void OnClickJoin()
+    {
+        buttonPress();
+        //join Game
     }
 
     public void buttonPress()
