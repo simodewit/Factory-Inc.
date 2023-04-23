@@ -9,64 +9,71 @@ public class MainMenu : MonoBehaviour
     public GameObject settings;
     public GameObject credits;
     public GameObject exitgame;
-    //public GameObject manager;
-
-    public void Start()
-    {
-        //manager = GameObject.Find("MainMusicManager");
-    }
+    public AudioSource soundEffect;
 
     public void OnClickPlay()
     {
-        //manager.GetComponent<MusicManager>().SoundEffect();
+        buttonPress();
         print("Play");
     }
 
     public void OnClickBackSettings()
     {
+        buttonPress();
         mainMenu.SetActive(true);
         settings.SetActive(false);
-        //manager.GetComponent<MusicManager>().SoundEffect();
     }
 
     public void OnClickSettings()
     {
+        buttonPress();
         mainMenu.SetActive(false);
         settings.SetActive(true);
-        //manager.GetComponent<MusicManager>().SoundEffect();
     }
 
     public void OnClickBackCredits()
     {
+        buttonPress();
         mainMenu.SetActive(true);
         credits.SetActive(false);
-        //manager.GetComponent<MusicManager>().SoundEffect();
     }
 
     public void OnClickCredits()
     {
+        buttonPress();
         mainMenu.SetActive(false);
         credits.SetActive(true);
-        //manager.GetComponent<MusicManager>().SoundEffect();
     }
 
     public void OnClickNoExitGame()
     {
+        buttonPress();
         mainMenu.SetActive(true);
         exitgame.SetActive(false);
-        //manager.GetComponent<MusicManager>().SoundEffect();
     }
 
     public void OnClickExitGame()
     {
+        buttonPress();
         mainMenu.SetActive(false);
         exitgame.SetActive(true);
-        //manager.GetComponent<MusicManager>().SoundEffect();
     }
 
     public void OnClickYesExitGame()
     {
-        //manager.GetComponent<MusicManager>().SoundEffect();
+        buttonPress();
         Application.Quit();
+    }
+
+    public void buttonPress()
+    {
+        if(soundEffect.enabled == false)
+        {
+            soundEffect.enabled = true;
+        }
+        else
+        {
+            soundEffect.Play();
+        }
     }
 }
