@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : NetworkBehaviour
 {
     public GameObject startScreen;
     public GameObject mainMenu;
@@ -14,6 +16,9 @@ public class MainMenu : MonoBehaviour
     public GameObject createLobby;
     public AudioSource soundEffect;
     private bool check;
+    public NetworkManager manager;
+    public TMP_InputField JoinHost;
+    public TMP_InputField NameOfRoom;
 
     public void Update()
     {
@@ -115,13 +120,15 @@ public class MainMenu : MonoBehaviour
     public void OnClickCreate()
     {
         buttonPress();
-        //create Game
+        SceneManager.LoadScene("Lobby");
     }
 
     public void OnClickJoin()
     {
         buttonPress();
-        //join Game
+        manager.networkAddress = JoinHost.text;
+        SceneManager.LoadScene("Lobby");
+        manager.OnStartClient();
     }
 
     public void buttonPress()
